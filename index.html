@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Sayang ❤️</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #000;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Animated Background */
+      .bg-animation {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background: linear-gradient(
+          45deg,
+          #ff6b9d,
+          #c06c84,
+          #764ba2,
+          #667eea,
+          #f093fb
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Opening Animation */
+      .opening {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeOut 1s ease-out 3s forwards;
+      }
+
+      .opening h1 {
+        color: white;
+        font-size: 3em;
+        margin-bottom: 20px;
+        animation: pulse 1s infinite;
+      }
+
+      .opening .click-me {
+        color: white;
+        font-size: 1.5em;
+        margin-top: 30px;
+        animation: bounce 1s infinite;
+        cursor: pointer;
+        padding: 15px 30px;
+        border: 2px solid white;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .header {
+        text-align: center;
+        padding: 60px 20px 40px;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      .header h1 {
+        font-size: 3em;
+        color: #fff;
+        text-shadow: 0 0 20px rgba(255, 107, 157, 0.8),
+          0 0 40px rgba(255, 107, 157, 0.5);
+        margin-bottom: 20px;
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow: 0 0 20px rgba(255, 107, 157, 0.8),
+            0 0 40px rgba(255, 107, 157, 0.5);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(255, 107, 157, 1),
+            0 0 60px rgba(255, 107, 157, 0.8);
+        }
+      }
+
+      .cake-animation {
+        font-size: 5em;
+        margin: 20px 0;
+        animation: rotate3d 3s infinite linear;
+        display: inline-block;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+      }
+
+      @keyframes rotate3d {
+        0% {
+          transform: rotateY(0deg);
+        }
+        100% {
+          transform: rotateY(360deg);
+        }
+      }
+
+      /* Photo Gallery */
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin: 30px 0;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 25px;
+        animation: fadeInUp 1.2s ease-out;
+      }
+
+      .photo-item {
+        position: relative;
+        aspect-ratio: 1;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4em;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .photo-item:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+      }
+
+      .photo-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .photo-upload-info {
+        text-align: center;
+        color: white;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 35px;
+        margin: 20px 0;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        animation: fadeInUp 1s ease-out;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .card p {
+        color: #333;
+        line-height: 2;
+        font-size: 1.08em;
+        margin-bottom: 20px;
+        text-align: justify;
+      }
+
+      .heart-container {
+        text-align: center;
+        margin: 30px 0;
+      }
+
+      .heart {
+        color: #ff1744;
+        font-size: 2.5em;
+        display: inline-block;
+        animation: heartbeat 1.5s infinite;
+        margin: 0 8px;
+        filter: drop-shadow(0 0 10px rgba(255, 23, 68, 0.8));
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.3);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+
+      .gift-section {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        border-radius: 30px;
+        padding: 30px;
+        margin: 30px 0;
+        animation: fadeIn 1.5s ease-out;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .gift-section h2 {
+        color: #d84315;
+        font-size: 2em;
+        margin-bottom: 25px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .gift-item {
+        background: white;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateX(-100%);
+        animation: slideIn 0.8s ease-out forwards;
+        border-left: 5px solid #ff6b9d;
+        transition: all 0.3s ease;
+      }
+
+      .gift-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(255, 107, 157, 0.3);
+      }
+
+      .gift-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .gift-item:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .gift-item:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .gift-item:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+      .gift-item:nth-child(6) {
+        animation-delay: 1s;
+      }
+
+      .gift-item .emoji {
+        font-size: 2.5em;
+        margin-right: 15px;
+        display: inline-block;
+        animation: rotate 2s infinite;
+      }
+
+      @keyframes rotate {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(-10deg);
+        }
+        75% {
+          transform: rotate(10deg);
+        }
+      }
+
+      .gift-item strong {
+        color: #d84315;
+        font-size: 1.3em;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .love-quote {
+        background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+        color: white;
+        padding: 35px;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 1.2em;
+        margin: 30px 0;
+        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        animation: fadeIn 2s ease-out;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .love-quote p {
+        color: white;
+        margin: 15px 0;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 40px;
+        color: white;
+        font-size: 1.5em;
+        animation: fadeIn 2s ease-out;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        animation: sparkleFloat 3s infinite;
+        z-index: 100;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes slideIn {
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes sparkleFloat {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-120px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Balloons */
+      .balloon {
+        position: fixed;
+        bottom: -150px;
+        font-size: 3em;
+        animation: floatUp 8s ease-in infinite;
+        z-index: 50;
+      }
+
+      @keyframes floatUp {
+        to {
+          bottom: 120%;
+          transform: translateX(50px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header h1 {
+          font-size: 2.2em;
+        }
+        .cake-animation {
+          font-size: 3.5em;
+        }
+        .card {
+          padding: 25px;
+        }
+        .opening h1 {
+          font-size: 2em;
+        }
+        .photo-gallery {
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-animation"></div>
+
+    <div class="opening" id="opening">
+      <h1>🎉 Ada Kejutan Spesial! 🎉</h1>
+      <div class="cake-animation">🎂</div>
+      <div class="click-me" onclick="startCelebration()">Klik Disini! ❤️</div>
+    </div>
+
+    <div class="container" id="mainContent" style="display: none">
+      <div class="header">
+        <h1>Happy Birthday Sayanggg ❤️</h1>
+        <div class="cake-animation">🎂</div>
+        <div class="heart-container">
+          <span class="heart">❤️</span>
+          <span class="heart">💕</span>
+          <span class="heart">❤️</span>
+        </div>
+      </div>
+
+      <div class="photo-gallery">
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/1.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/2.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/3.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/4.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/5.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/6.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/7.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+        <div
+          class="photo-item"
+          style="
+            background-image: url('images/8.jpg');
+            background-size: cover;
+            background-position: center;
+            font-size: 0;
+          "
+        ></div>
+      </div>
+
+      <div class="card">
+        <p>
+          Semoga hal baik datang tanpa harus kamu kejar terlalu keras, semogaa
+          doa baik dan harapann sayang dikabulkan dan juga apa yang sedang
+          sayangg usahakan semogaa dilancarkan, semogaa sayang banyak rezekinya,
+          dikelilingi orang-orang baik dan sehat terus yaa sayangg, sayanggkuu
+          hebatt bangett.
+        </p>
+
+        <p>
+          Makasii sayangg, makasii udah datang ke hidup aku, udah mau membuka
+          diri, udah sabar jugaa nunggu aku, maaf sayangg mungkin aku engga
+          sempurna tapi aku bakal selalu sama kamu sayangg, aku cintaa bangett
+          samaa kamu, aku sayangg bangett sama kamu. maaff kata-katanyaa ga
+          rapih ☹.
+        </p>
+      </div>
+
+      <div class="gift-section">
+        <h2>🎁 Kado Spesial Buat Kamu 🎁</h2>
+
+        <div class="gift-item">
+          <span class="emoji">👕</span>
+          <strong>Kaos Hijau Lucuk</strong>
+          <p>
+            Kaos yang ayangg tunjukinn waktu terakhir ketemu menurutt aku
+            lucukk, cocokk kalo dipake sama ayangg, terus kamu jugaa gapunya
+            warna ijo ginii, jadi aku beliin, semogaa kamu sukaa!
+          </p>
+        </div>
+
+        <div class="gift-item">
+          <span class="emoji">👜</span>
+          <strong>Tas Burgundy</strong>
+          <p>
+            Aku pilih warna burgundy karenaa biar matching ajaa sama sendal
+            ayangg, tapi keknyaa ayangg kurang suka ya sama warnanya, maaf kalo
+            gasukaa, tasnya juga keknyaa kurang gede, kirainn bakal agak gedee,
+            tapi lucukk, kek cocok ajaa dipake sama kamu hehee
+          </p>
+        </div>
+
+        <div class="gift-item">
+          <span class="emoji">👛</span>
+          <strong>Dompet Cantik</strong>
+          <p>
+            Kata kamu cenah kek nini nini dompet aku, ishh jadi aku beliin
+            dompett, nah ini jugaa warnanya keknyaa ayangg kurang sukaa, maaf
+            yaa sayangg, aku gatauu, kalo kamu kurang suka warna ginii, kalo
+            gasukaa jangan dibuang ya ☹
+          </p>
+        </div>
+
+        <div class="gift-item">
+          <span class="emoji">🍃</span>
+          <strong>Parfum Matcha</strong>
+          <p>
+            Aku beliin parfum inii karena ayangg sukaa matcha, kalo diliat
+            review orang-orang katanyaa wanginyaa enakk, jadi aku beliin, aku
+            belum cium wanginya kek gimanaa tapi aku harap sayang sukaa.
+          </p>
+        </div>
+
+        <div class="gift-item">
+          <span class="emoji">💨</span>
+          <strong>Hair Dryer</strong>
+          <p>
+            Kalo aku liatt setiap ayangg abis keramas, rambut kamu buat
+            keringnya lamaa, jadi aku beliin biar cepet kering hehee, semogaa
+            bermanfaat yaa sayangg!
+          </p>
+        </div>
+
+        <p
+          style="
+            text-align: center;
+            margin-top: 25px;
+            font-style: italic;
+            color: #d84315;
+            font-size: 1.1em;
+          "
+        >
+          Maaf yaa kalo kadonya kurang atau gasukaa ☹
+        </p>
+      </div>
+
+      <div class="love-quote">
+        <p style="font-size: 1.4em">
+          <strong>✨ Sekali lagi, selamatt ulang tahun sayanggkuu! ✨</strong>
+        </p>
+        <p style="margin-top: 20px">
+          Maaf aku gabikinin surat, tulisann aku jelekk 😭, aku bikininn ini
+          karena lucukk ajaa hehee
+        </p>
+        <p style="margin-top: 20px; font-size: 1.4em">
+          <strong
+            >Aku cintaa bangett samaa kamu tau ga, sayangg bangett samaa
+            kamuu</strong
+          >
+        </p>
+        <p style="margin-top: 15px; font-size: 1.3em">
+          Love youu soo muchhh sayangg 😘❤
+        </p>
+      </div>
+
+      <div class="footer">
+        <div>✨ Forever & Always ✨</div>
+        <div style="font-size: 0.8em; margin-top: 10px; opacity: 0.8">
+          Made with 💕 by someone who loves you so much
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function startCelebration() {
+        document.getElementById("opening").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        createConfetti();
+        startBalloons();
+      }
+
+      // Create sparkles
+      function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        const sparkles = ["✨", "💫", "⭐", "🌟"];
+        sparkle.innerHTML =
+          sparkles[Math.floor(Math.random() * sparkles.length)];
+        sparkle.style.left = Math.random() * window.innerWidth + "px";
+        sparkle.style.top = window.innerHeight + "px";
+        sparkle.style.fontSize = Math.random() * 25 + 15 + "px";
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 3000);
+      }
+
+      setInterval(createSparkle, 250);
+
+      // Create confetti
+      function createConfetti() {
+        const colors = ["#ff6b9d", "#c06c84", "#764ba2", "#667eea", "#f093fb"];
+        for (let i = 0; i < 100; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement("div");
+            confetti.style.position = "fixed";
+            confetti.style.width = "10px";
+            confetti.style.height = "10px";
+            confetti.style.backgroundColor =
+              colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * window.innerWidth + "px";
+            confetti.style.top = "-10px";
+            confetti.style.borderRadius = "50%";
+            confetti.style.animation = "sparkleFloat 3s ease-out forwards";
+            confetti.style.zIndex = "999";
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
+          }, i * 30);
+        }
+      }
+
+      // Create balloons
+      function startBalloons() {
+        setInterval(() => {
+          const balloon = document.createElement("div");
+          balloon.className = "balloon";
+          const balloons = ["🎈", "🎉", "🎊", "🎁"];
+          balloon.innerHTML =
+            balloons[Math.floor(Math.random() * balloons.length)];
+          balloon.style.left = Math.random() * 90 + "%";
+          balloon.style.animationDuration = Math.random() * 3 + 5 + "s";
+          document.body.appendChild(balloon);
+
+          setTimeout(() => balloon.remove(), 8000);
+        }, 2000);
+      }
+
+      // Create floating hearts on click
+      document.addEventListener("click", (e) => {
+        const heart = document.createElement("div");
+        const hearts = ["❤️", "💕", "💖", "💗", "💝"];
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.position = "fixed";
+        heart.style.left = e.clientX - 15 + "px";
+        heart.style.top = e.clientY - 15 + "px";
+        heart.style.fontSize = "35px";
+        heart.style.pointerEvents = "none";
+        heart.style.animation = "sparkleFloat 2s ease-out forwards";
+        heart.style.zIndex = "999";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 2000);
+      });
+    </script>
+  </body>
+</html>
